@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Números</title>
+        <link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+    <h1>Validação de Números</h1>
+    <form action="#" method="get" id="form">
+        <input required placeholder="Digite o numero A" type="number" name="n1" id="tnum"> <br>
+        <input required placeholder="Digite o numero B" type="number" name="n2" id="tnum2"> <br>
+        <input type="submit" value="Calcular" onclick="verificar()">
+    </form>
+    <p id="res">A resposta vai aqui: </p>
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            verificar();
+        });
+
+        function verificar() {
+            var num1 = parseInt(document.getElementById("tnum").value);
+            var num2 = parseInt(document.getElementById("tnum2").value);
+            var resultado = document.getElementById("res");
+
+            if (isNaN(num1) || isNaN(num2)) {
+                resultado.innerHTML = "Por favor, insira números válidos.";
+            } else if (num2 > num1) {
+                resultado.innerHTML = "O valor digitado do campo A e " + num1 + " ele e menor que o número do campo B " + num2 + " Portanto e Valido " +  ".";
+                tnum.style.border = '1px solid green'
+                document.querySelector('.success-message ').style.display = 'block'
+            } else if (num1 > num2) {
+                resultado.innerHTML = "O valor digitado do campo A e " + num1 + " ele e maior que o número do campo B " + num2 + " Portanto e Invalido " +  ".";
+                tnum2.style.border = '1px solid red'
+                document.querySelector('.erro-msg ').style.display = 'block'
+            } else {
+                resultado.innerHTML = "Os números são iguais." ;
+            }
+        }
+    </script>
+</body>
+
+</html>
